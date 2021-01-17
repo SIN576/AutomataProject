@@ -5,23 +5,13 @@ import java.util.List;
 public class MainProject {
     public static void main(String[] args){
         System.out.println("*******Automata Project!********");
-        System.out.println("=========Team 5 Cs G5!==========");
+        System.out.println("=========Team 5 Cs G5!==========\n");
+        System.out.println("1. Input your final automata");
+        System.out.println("2. Test if FA is non-deterministic or deterministic");
+        System.out.println("3. Test if a string is accept in FA");
+        System.out.println("4. Construct an equivalent DFA from an NFA");
+        System.out.println("5. Minimize a DFA");
 
-        List<String> stringList = InputData.inputAlphabet();
-        Integer numberOfState = InputData.inputNumberOfState();
-        List<String> listState = InputData.listStates(numberOfState);
-        String startState = InputData.inputStartState(listState);
-        List<String> listFinalState = InputData.listFinalState(listState);
-        List<List<String>> transactions = InputData.transactions(listState,stringList);
-
-        System.out.println("w = "+stringList.toString());
-        System.out.println("number of state = "+numberOfState);
-        System.out.println("list of state : "+ listState.toString());
-        System.out.println("Start state is : "+startState);
-        System.out.println("Final state is : "+listFinalState.toString());
-        System.out.println("transaction : ");
-        for (List<String> s: transactions) {
-            System.out.println(s.get(0) + "----"+ s.get(1)+"--->"+ s.get(2));
-        }
+       // InputData.mainInputData();
     }
 }

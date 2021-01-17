@@ -5,6 +5,27 @@ import java.util.List; //import list
 import java.util.Scanner; // import scanner for get argument from terminal
 
 public class InputData {
+
+    public static void mainInputData(){
+        List<String> stringList = InputData.inputAlphabet();
+        Integer numberOfState = InputData.inputNumberOfState();
+        List<String> listState = InputData.listStates(numberOfState);
+        String startState = InputData.inputStartState(listState);
+        List<String> listFinalState = InputData.listFinalState(listState);
+        List<List<String>> transactions = InputData.transactions(listState,stringList);
+
+        FAModel faModel = new FAModel(stringList,numberOfState, listState, startState, listFinalState, transactions);
+
+        System.out.println("w = "+faModel.getListAlphabet());
+        System.out.println("number of state = "+numberOfState);
+        System.out.println("list of state : "+ listState.toString());
+        System.out.println("Start state is : "+startState);
+        System.out.println("Final state is : "+listFinalState.toString());
+        System.out.println("transaction : "+transactions.toString());
+        for (List<String> s: transactions) {
+            System.out.println(s.get(0) + "----"+ s.get(1)+"--->"+ s.get(2));
+        }
+    }
     // function for user input Alphabet
     public static List<String> inputAlphabet() {
         //create list for store all alphabet
