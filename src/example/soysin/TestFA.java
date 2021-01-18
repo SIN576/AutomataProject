@@ -6,5 +6,8 @@ public class TestFA {
         if (faModel.getNumberOfState() * faModel.getListAlphabet().size() == faModel.getTransaction().size()){
             System.out.println("DFA");
         }
+        else {
+            System.out.println("NFA");
+        }
     }
 }

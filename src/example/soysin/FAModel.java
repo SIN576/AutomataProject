@@ -20,6 +20,9 @@ public class FAModel {
         this.transaction = transaction;
     }
 
+    public FAModel() {
+    }
+
     public List<String> getListAlphabet() {
         return listAlphabet;
     }
