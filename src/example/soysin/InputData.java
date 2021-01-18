@@ -6,7 +6,7 @@ import java.util.Scanner; // import scanner for get argument from terminal
 
 public class InputData {
 
-    public static void mainInputData(){
+    public static FAModel mainInputData(Integer num){
         List<String> stringList = InputData.inputAlphabet();
         Integer numberOfState = InputData.inputNumberOfState();
         List<String> listState = InputData.listStates(numberOfState);
@@ -17,15 +17,25 @@ public class InputData {
         FAModel faModel = new FAModel(stringList,numberOfState, listState, startState, listFinalState, transactions);
 
         System.out.println("w = "+faModel.getListAlphabet());
-        System.out.println("number of state = "+numberOfState);
-        System.out.println("list of state : "+ listState.toString());
-        System.out.println("Start state is : "+startState);
-        System.out.println("Final state is : "+listFinalState.toString());
-        System.out.println("transaction : "+transactions.toString());
-        for (List<String> s: transactions) {
+        System.out.println("number of state = "+faModel.getNumberOfState());
+        System.out.println("list of state : "+ faModel.getListState());
+        System.out.println("Start state is : "+faModel.getStartState());
+        System.out.println("Final state is : "+faModel.getFinalState());
+        System.out.println("transaction : "+faModel.getTransaction());
+        for (List<String> s: faModel.getTransaction()) {
             System.out.println(s.get(0) + "----"+ s.get(1)+"--->"+ s.get(2));
         }
+        if(num == 1){
+            System.out.print("\nDo you want back?(yes/no): ");
+            Scanner scanner = new Scanner(System.in);
+            String ans = scanner.nextLine();
+            if (ans.equals("no")){
+                faModel = mainInputData(1);
+            }
+        }
+        return faModel;
     }
+
     // function for user input Alphabet
     public static List<String> inputAlphabet() {
         //create list for store all alphabet
