@@ -1,5 +1,6 @@
 package example.soysin;
 
+
 import javax.swing.*;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class FAModel {
     private List<String> finalState;
     private List<List<String>> transaction;
 
+
     public FAModel(List<String> listAlphabet, Integer numberOfState, List<String> listState, String startState, List<String> finalState, List<List<String>> transaction) {
         this.listAlphabet = listAlphabet;
         this.numberOfState = numberOfState;
@@ -18,6 +20,9 @@ public class FAModel {
         this.startState = startState;
         this.finalState = finalState;
         this.transaction = transaction;
+    }
+
+    public FAModel() {
     }
 
     public List<String> getListAlphabet() {
@@ -67,4 +72,5 @@ public class FAModel {
     public void setTransaction(List<List<String>> transaction) {
         this.transaction = transaction;
     }
+
 }

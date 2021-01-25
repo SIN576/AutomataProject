@@ -154,6 +154,7 @@ public class InputData {
         Scanner myObj = new Scanner(System.in);
         System.out.println("when you want finish your input pls input word | done |!");
         System.out.println("example:q0 transaction by a to q1 you will input | q0 a q1 |");
+        System.out.println("if q0 transaction by obsilon to q1 you will input | q0 o q1 |");
         System.out.println("Enter transactions : ");
 
         //create [][] store transactions
@@ -187,8 +188,9 @@ public class InputData {
     }
     //function for check alphabet
     public static boolean checkAlphabet(String alphabet,List<String> listAlphabet){
+       // listAlphabet.add("o");
         for (String s: listAlphabet) {
-            if (s.equals(alphabet)){
+            if (s.equals(alphabet) || alphabet.equals("o")){
                 return true;
             }
         }
