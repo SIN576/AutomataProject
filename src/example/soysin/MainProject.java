@@ -15,7 +15,12 @@ public class MainProject {
                     FAModel faModel = InputData.mainInputData(1);
                     break;
                 case 2:
-                    TestFA.testFa();
+                    if (TestFA.testFa()) {
+                        System.out.println("DFA");
+                    }
+                    else {
+                        System.out.println("NFA");
+                    }
                     break;
                 case 3:
                     System.out.println("3");
