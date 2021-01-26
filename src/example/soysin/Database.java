@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.parser.JSONParser;
-import org.json.parser.ParseException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -42,26 +42,29 @@ public class Database {
         faModelList.add(faModel1);
 
         faModelList.add(faModel1);
-        writeDataToFile(listAlphabet,numberOfState , listOfState , "q0", listFinalStates , tXs);
+//
+//        for (FAModel f : faModelList
+//        ) {
+//            System.out.println(f.getListAlphabet().toString());
+//        }
+
+        writeDataToFile(listAlphabet,numberOfState , listOfState , "q0", listFinalStates , eachTX);
     }
 
-    public static void writeDataToFile(List<String> listAlphabet, int state, List<String> listOfState , String startState , List<String> listFinalStates, List<List<String>> eachTX){
+    public static void writeDataToFile(List<String> listAlphabet, int state, List<String> listOfState , String startState , List<String> listFinalStates, List<String> eachTX){
 
         JSONObject label1Object = new JSONObject();
         JSONArray label1Array = new JSONArray();
         JSONArray label2Array = new JSONArray();
 
         label1Array.add(label1Object);
-
         label1Object.put("alphabet", listAlphabet);
         label1Object.put("state", state);
         label1Object.put("listOfState", listOfState);
         label1Object.put("stateState", startState);
         label1Object.put("finalState", listFinalStates);
-        label1Object.put("transaction",label2Array);
+        label1Object.put("transaction",eachTX);
         label1Object.put("finalState", listFinalStates);
-
-        label2Array.add(eachTX);
 
 
         try {
