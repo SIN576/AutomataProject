@@ -1,9 +1,7 @@
 package example.soysin;
 
 
-import org.json.JSONArray;
-
-import java.util.List;
+import org.json.simple.JSONArray;
 
 public class FAModel {
     private JSONArray listAlphabet;

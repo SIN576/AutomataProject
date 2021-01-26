@@ -1,6 +1,7 @@
 package example.soysin;
 
-import org.json.JSONArray;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import java.util.ArrayList; //import arraylist
 import java.util.List; //import list
@@ -51,7 +52,7 @@ public class InputData {
         //cut alphabet in string and add it to list
         for (int i = 0; i < string.length(); i++) {
             if (string.charAt(i) != ' ') {
-                strings.put(string.charAt(i) + "");
+                strings.add(string.charAt(i) + "");
             }
         }
 
@@ -83,7 +84,7 @@ public class InputData {
         JSONArray listStates = new JSONArray();
         for (int i = 0; i < numberOfState; i++) {
             String state = "q" + i;
-            listStates.put(state);
+            listStates.add(state);
         }
         System.out.println("list of state : " + listStates.toString());
         return listStates;
@@ -141,7 +142,7 @@ public class InputData {
             } else if (!stateIsValid(finalState, listState)) {
                 System.out.println(finalState + " is not invalid");
             } else {
-                listFinalState.put(finalState);
+                listFinalState.add(finalState);
             }
         }
         return listFinalState;
@@ -173,13 +174,13 @@ public class InputData {
                 System.out.println(listTransaction.toString()+" is incorrect");
                 continue;
             }
-            transactions.put(listTransaction);
+            transactions.add(listTransaction);
         }
         return transactions;
     }
     //function for check transaction
     public static boolean checkTransaction(JSONArray listTransaction,JSONArray listState,JSONArray listAlphabet){
-        if(listTransaction.length() != 3){
+        if(listTransaction.size() != 3){
             return false;
         }else if(!stateIsValid(listTransaction.get(0),listState) || !stateIsValid(listTransaction.get(2),listState)){
             return false;
@@ -203,11 +204,11 @@ public class InputData {
         String subString="";
         for (int i = 0 ; i < string.length() ; i++){
             if(string.charAt(i) == ' '){
-                listCutString.put(subString);
+                listCutString.add(subString);
                 subString ="";
             }else if(i == string.length()-1){
                 subString = subString + string.charAt(i);
-                listCutString.put(subString);
+                listCutString.add(subString);
                 subString ="";
             }
             else{

@@ -7,8 +7,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="json-20201115" level="project" />
-    <orderEntry type="library" name="json-simple-1.1-bundle" level="project" />
+    <orderEntry type="library" name="json-20201115 (1)" level="project" />
     <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="json-simple-1.1-bundle" level="project" />
   </component>
 </module>

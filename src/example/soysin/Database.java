@@ -9,7 +9,6 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,14 +17,14 @@ import java.io.IOException;
 public class Database {
     private static FileWriter file;
     public static void main(String[] args) {
-        List<String> listAlphabet = new ArrayList<>();
+        JSONArray listAlphabet = new JSONArray();
         listAlphabet.add("a");
         listAlphabet.add("b");
 
         Integer numberOfState = 3;
-        List<String> listOfState = InputData.listStates(numberOfState);
+        JSONArray listOfState = InputData.listStates(numberOfState);
         String startState = "q0";
-        List<String> listFinalStates = new ArrayList<>();
+        JSONArray listFinalStates = new JSONArray();
         listFinalStates.add("q1");
 
         List<String> eachTX = new ArrayList<>();
@@ -33,7 +32,7 @@ public class Database {
         eachTX.add("a");
         eachTX.add("q1");
 
-        List<List<String>> tXs = new ArrayList<>();
+        JSONArray tXs = new JSONArray();
         tXs.add(eachTX);
 
         FAModel faModel1 = new FAModel(listAlphabet, numberOfState, listOfState, startState, listFinalStates, tXs);
