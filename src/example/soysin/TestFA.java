@@ -13,7 +13,7 @@ public class TestFA {
 //                return false;
 //            }
 //        }
-        if (faModel.getNumberOfState() * faModel.getListAlphabet().length() == faModel.getTransaction().length()){
+        if (faModel.getNumberOfState() * faModel.getListAlphabet().size() == faModel.getTransaction().size()){
             return true;
         }
         else {
