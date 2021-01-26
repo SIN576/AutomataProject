@@ -1,19 +1,20 @@
 package example.soysin;
 
 
-import javax.swing.*;
+import org.json.JSONArray;
+
 import java.util.List;
 
 public class FAModel {
-    private List<String> listAlphabet;
+    private JSONArray listAlphabet;
     private Integer numberOfState;
-    private List<String> listState;
+    private JSONArray listState;
     private String startState;
-    private List<String> finalState;
-    private List<List<String>> transaction;
+    private JSONArray finalState;
+    private JSONArray transaction;
 
 
-    public FAModel(List<String> listAlphabet, Integer numberOfState, List<String> listState, String startState, List<String> finalState, List<List<String>> transaction) {
+    public FAModel(JSONArray listAlphabet, Integer numberOfState, JSONArray listState, String startState, JSONArray finalState, JSONArray transaction) {
         this.listAlphabet = listAlphabet;
         this.numberOfState = numberOfState;
         this.listState = listState;
@@ -22,14 +23,11 @@ public class FAModel {
         this.transaction = transaction;
     }
 
-    public FAModel() {
-    }
-
-    public List<String> getListAlphabet() {
+    public JSONArray getListAlphabet() {
         return listAlphabet;
     }
 
-    public void setListAlphabet(List<String> listAlphabet) {
+    public void setListAlphabet(JSONArray listAlphabet) {
         this.listAlphabet = listAlphabet;
     }
 
@@ -41,11 +39,11 @@ public class FAModel {
         this.numberOfState = numberOfState;
     }
 
-    public List<String> getListState() {
+    public JSONArray getListState() {
         return listState;
     }
 
-    public void setListState(List<String> listState) {
+    public void setListState(JSONArray listState) {
         this.listState = listState;
     }
 
@@ -57,19 +55,19 @@ public class FAModel {
         this.startState = startState;
     }
 
-    public List<String> getFinalState() {
+    public JSONArray getFinalState() {
         return finalState;
     }
 
-    public void setFinalState(List<String> finalState) {
+    public void setFinalState(JSONArray finalState) {
         this.finalState = finalState;
     }
 
-    public List<List<String>> getTransaction() {
+    public JSONArray getTransaction() {
         return transaction;
     }
 
-    public void setTransaction(List<List<String>> transaction) {
+    public void setTransaction(JSONArray transaction) {
         this.transaction = transaction;
     }
 

@@ -3,14 +3,18 @@ package example.soysin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
+
 public class Test {
 
     public static void main(String[] args) {
         JSONObject fa = dfa();
         JSONObject nfa = nfa();
 
-        System.out.println(fa.toString());
-        System.out.println(nfa.toString());
+        JSONArray objects = fa.getJSONArray("transactions");
+        JSONObject object = objects.getJSONObject(0);
+        JSONArray jsonArray = object.getJSONArray("tx1");
+        System.out.println(jsonArray.get(1));
     }
     public static JSONObject dfa(){
         //create object
@@ -33,6 +37,7 @@ public class Test {
         jsonArray2.put("q0");
         jsonArray2.put("a");
         jsonArray2.put("q1");
+
 
         JSONArray jsonArray3 = new JSONArray();
         jsonArray3.put("q0");
@@ -60,12 +65,16 @@ public class Test {
         jsonArray7.put("q2");
 
         JSONArray transactions = new JSONArray();
-        transactions.put(jsonArray2);
-        transactions.put(jsonArray3);
-        transactions.put(jsonArray4);
-        transactions.put(jsonArray5);
-        transactions.put(jsonArray6);
-        transactions.put(jsonArray7);
+        JSONObject txs = new JSONObject();
+        txs.put("tx1",jsonArray2);
+        txs.put("tx2",jsonArray3);
+        txs.put("tx3",jsonArray4);
+        txs.put("tx4",jsonArray5);
+        txs.put("tx5",jsonArray6);
+        txs.put("tx6",jsonArray7);
+
+
+        transactions.put(txs);
 
         fa.put("transactions",transactions);
         return fa;
