@@ -1,0 +1,1 @@
+[{"stateState":"q0","alphabet":["a","b"],"state":3,"finalState":["q1"],"transaction":["q0","a","q1"],"listOfState":["q0","q1","q2"]}]
