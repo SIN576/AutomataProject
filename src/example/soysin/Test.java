@@ -1,9 +1,8 @@
 package example.soysin;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
-import java.util.List;
 
 public class Test {
 
@@ -11,123 +10,250 @@ public class Test {
         JSONObject fa = dfa();
         JSONObject nfa = nfa();
 
-        JSONArray objects = fa.getJSONArray("transactions");
-        JSONObject object = objects.getJSONObject(0);
-        JSONArray jsonArray = object.getJSONArray("tx1");
-        System.out.println(jsonArray.get(1));
+        System.out.println(fa);
+        System.out.println(nfa);
+        JSONArray alphabets = (JSONArray) fa.get("alphabets");
+        System.out.println(alphabets);
+        System.out.println(fa.get("numberOfState"));
+        System.out.println(fa.get("listState"));
+        System.out.println(fa.get("finalStates"));
+        System.out.println(fa.get("transactions"));
+
+        alphabets = (JSONArray) nfa.get("alphabets");
+        System.out.println(alphabets);
+        System.out.println(nfa.get("numberOfState"));
+        System.out.println(nfa.get("listState"));
+        System.out.println(nfa.get("finalStates"));
+        System.out.println(nfa.get("transactions"));
+    }
+    public static JSONObject nfa1(){
+        //create object
+        JSONObject fa = new JSONObject();
+
+        JSONArray alphabets = new JSONArray();
+        alphabets.add("a");
+        alphabets.add("b");
+
+        Integer numberOfState = 2;
+        JSONArray listState = InputData.listStates(numberOfState);
+        JSONArray finalStates = new JSONArray();
+        finalStates.add("q1");
+
+        JSONArray transaction1 = new JSONArray();
+        transaction1.add("q0");
+        transaction1.add("a");
+        transaction1.add("q1");
+
+        JSONArray transaction2 = new JSONArray();
+        transaction2.add("q0");
+        transaction2.add("b");
+        transaction2.add("q0");
+
+        JSONArray transaction3 = new JSONArray();
+        transaction3.add("q0");
+        transaction3.add("b");
+        transaction3.add("q1");
+
+        JSONArray transaction4 = new JSONArray();
+        transaction4.add("q1");
+        transaction4.add("a");
+        transaction4.add("q1");
+
+        JSONArray transactions = new JSONArray();
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transaction3);
+        transactions.add(transaction4);
+
+        fa.put("alphabets",alphabets);
+        fa.put("numberOfState",numberOfState);
+        fa.put("listState",listState);
+        fa.put("startState","q0");
+        fa.put("finalStates",finalStates);
+        fa.put("transactions",transactions);
+
+        return fa;
     }
     public static JSONObject dfa(){
         //create object
         JSONObject fa = new JSONObject();
 
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put("a");
-        jsonArray.put("b");
-        fa.put("alphabets",jsonArray);
+        JSONArray alphabets = new JSONArray();
+        alphabets.add("a");
+        alphabets.add("b");
 
-        fa.put("numberOfState",3);
-        fa.put("listState",InputData.listStates(3));
-        fa.put("startState","q0");
+        Integer numberOfState = 2;
+        JSONArray listState = InputData.listStates(numberOfState);
+        JSONArray finalStates = new JSONArray();
+        finalStates.add("q1");
 
-        JSONArray jsonArray1 = new JSONArray();
-        jsonArray1.put("q1");
-        fa.put("finalStates",jsonArray1);
+        JSONArray transaction1 = new JSONArray();
+        transaction1.add("q0");
+        transaction1.add("a");
+        transaction1.add("q1");
 
-        JSONArray jsonArray2 = new JSONArray();
-        jsonArray2.put("q0");
-        jsonArray2.put("a");
-        jsonArray2.put("q1");
+        JSONArray transaction2 = new JSONArray();
+        transaction2.add("q0");
+        transaction2.add("b");
+        transaction2.add("q0");
 
+        JSONArray transaction3 = new JSONArray();
+        transaction3.add("q1");
+        transaction3.add("b");
+        transaction3.add("q1");
 
-        JSONArray jsonArray3 = new JSONArray();
-        jsonArray3.put("q0");
-        jsonArray3.put("b");
-        jsonArray3.put("q0");
-
-        JSONArray jsonArray4 = new JSONArray();
-        jsonArray4.put("q1");
-        jsonArray4.put("a");
-        jsonArray4.put("q2");
-
-        JSONArray jsonArray5 = new JSONArray();
-        jsonArray5.put("q1");
-        jsonArray5.put("b");
-        jsonArray5.put("q1");
-
-        JSONArray jsonArray6 = new JSONArray();
-        jsonArray6.put("q2");
-        jsonArray6.put("a");
-        jsonArray6.put("q2");
-
-        JSONArray jsonArray7 = new JSONArray();
-        jsonArray7.put("q2");
-        jsonArray7.put("b");
-        jsonArray7.put("q2");
+        JSONArray transaction4 = new JSONArray();
+        transaction4.add("q1");
+        transaction4.add("a");
+        transaction4.add("q1");
 
         JSONArray transactions = new JSONArray();
-        JSONObject txs = new JSONObject();
-        txs.put("tx1",jsonArray2);
-        txs.put("tx2",jsonArray3);
-        txs.put("tx3",jsonArray4);
-        txs.put("tx4",jsonArray5);
-        txs.put("tx5",jsonArray6);
-        txs.put("tx6",jsonArray7);
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transaction3);
+        transactions.add(transaction4);
 
-
-        transactions.put(txs);
-
+        fa.put("alphabets",alphabets);
+        fa.put("numberOfState",numberOfState);
+        fa.put("listState",listState);
+        fa.put("startState","q0");
+        fa.put("finalStates",finalStates);
         fa.put("transactions",transactions);
+
+        return fa;
+    }
+    public static JSONObject nfa2(){
+        JSONObject fa = new JSONObject();
+        JSONArray alphabets = new JSONArray();
+        alphabets.add("a");
+        alphabets.add("b");
+
+        Integer numberOfState = 2;
+        JSONArray listState = InputData.listStates(numberOfState);
+        JSONArray finalStates = new JSONArray();
+        finalStates.add("q1");
+
+        JSONArray transaction1 = new JSONArray();
+        transaction1.add("q0");
+        transaction1.add("a");
+        transaction1.add("q1");
+
+        JSONArray transaction2 = new JSONArray();
+        transaction2.add("q0");
+        transaction2.add("b");
+        transaction2.add("q0");
+
+        JSONArray transaction3 = new JSONArray();
+        transaction3.add("q1");
+        transaction3.add("b");
+        transaction3.add("q1");
+
+        JSONArray transactions = new JSONArray();
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transaction3);
+        transactions.add(transaction3);
+
+        fa.put("alphabets",alphabets);
+        fa.put("numberOfState",numberOfState);
+        fa.put("listState",listState);
+        fa.put("startState","q0");
+        fa.put("finalStates",finalStates);
+        fa.put("transactions",transactions);
+
+        return fa;
+    }
+    public static JSONObject nfaE(){
+        JSONObject fa = new JSONObject();
+        JSONArray alphabets = new JSONArray();
+        alphabets.add("a");
+        alphabets.add("b");
+
+        Integer numberOfState = 2;
+        JSONArray listState = InputData.listStates(numberOfState);
+        JSONArray finalStates = new JSONArray();
+        finalStates.add("q1");
+
+        JSONArray transaction1 = new JSONArray();
+        transaction1.add("q0");
+        transaction1.add("a");
+        transaction1.add("q1");
+
+        JSONArray transaction2 = new JSONArray();
+        transaction2.add("q0");
+        transaction2.add("b");
+        transaction2.add("q0");
+
+        JSONArray transaction3 = new JSONArray();
+        transaction3.add("q1");
+        transaction3.add("b");
+        transaction3.add("q1");
+
+        JSONArray transaction4 = new JSONArray();
+        transaction4.add("q1");
+        transaction4.add("o");
+        transaction4.add("q1");
+
+
+        JSONArray transactions = new JSONArray();
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transaction3);
+        transactions.add(transaction4);
+
+        fa.put("alphabets",alphabets);
+        fa.put("numberOfState",numberOfState);
+        fa.put("listState",listState);
+        fa.put("startState","q0");
+        fa.put("finalStates",finalStates);
+        fa.put("transactions",transactions);
+
         return fa;
     }
     public static JSONObject nfa(){
         JSONObject fa = new JSONObject();
+        JSONArray alphabets = new JSONArray();
+        alphabets.add("a");
+        alphabets.add("b");
 
-        JSONArray jsonArray = new JSONArray();
-        jsonArray.put("a");
-        jsonArray.put("b");
-        fa.put("alphabets",jsonArray);
+        Integer numberOfState = 2;
+        JSONArray listState = InputData.listStates(numberOfState);
+        JSONArray finalStates = new JSONArray();
+        finalStates.add("q1");
 
-        fa.put("numberOfState",3);
-        fa.put("listState",InputData.listStates(3));
-        fa.put("startState","q0");
+        JSONArray transaction1 = new JSONArray();
+        transaction1.add("q0");
+        transaction1.add("a");
+        transaction1.add("q1");
 
-        JSONArray jsonArray1 = new JSONArray();
-        jsonArray1.put("q1");
-        fa.put("finalStates",jsonArray1);
+        JSONArray transaction2 = new JSONArray();
+        transaction2.add("q0");
+        transaction2.add("b");
+        transaction2.add("q0");
 
-        JSONArray jsonArray2 = new JSONArray();
-        jsonArray2.put("q0");
-        jsonArray2.put("a");
-        jsonArray2.put("q1");
+        JSONArray transaction3 = new JSONArray();
+        transaction3.add("q1");
+        transaction3.add("b");
+        transaction3.add("q1");
 
-        JSONArray jsonArray3 = new JSONArray();
-        jsonArray3.put("q0");
-        jsonArray3.put("o");
-        jsonArray3.put("q0");
+        JSONArray transaction4 = new JSONArray();
+        transaction3.add("q1");
+        transaction3.add("b");
+        transaction3.add("q1");
 
-        JSONArray jsonArray4 = new JSONArray();
-        jsonArray4.put("q1");
-        jsonArray4.put("a");
-        jsonArray4.put("q2");
-
-        JSONArray jsonArray6 = new JSONArray();
-        jsonArray6.put("q2");
-        jsonArray6.put("a");
-        jsonArray6.put("q2");
-
-        JSONArray jsonArray7 = new JSONArray();
-        jsonArray7.put("q2");
-        jsonArray7.put("b");
-        jsonArray7.put("q2");
 
         JSONArray transactions = new JSONArray();
-        transactions.put(jsonArray2);
-        transactions.put(jsonArray3);
-        transactions.put(jsonArray4);
-        transactions.put(jsonArray6);
-        transactions.put(jsonArray7);
+        transactions.add(transaction1);
+        transactions.add(transaction2);
+        transactions.add(transaction3);
 
+        fa.put("alphabets",alphabets);
+        fa.put("numberOfState",numberOfState);
+        fa.put("listState",listState);
+        fa.put("startState","q0");
+        fa.put("finalStates",finalStates);
         fa.put("transactions",transactions);
+
         return fa;
     }
 

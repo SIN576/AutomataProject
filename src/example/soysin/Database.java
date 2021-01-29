@@ -46,8 +46,8 @@ public class Database {
 //        ) {
 //            System.out.println(f.getListAlphabet().toString());
 //        }
-        org.json.JSONObject fa = Test.dfa();
-        org.json.JSONObject nfa = Test.nfa();
+        JSONObject fa = Test.dfa();
+        JSONObject nfa = Test.nfa();
         writeDataToFile(listAlphabet,numberOfState , listOfState , "q0", listFinalStates , eachTX);
     }
 

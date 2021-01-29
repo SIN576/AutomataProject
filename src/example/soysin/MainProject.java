@@ -1,5 +1,7 @@
 package example.soysin;
 
+import org.json.simple.JSONObject;
+
 import java.awt.*;
 import java.util.Scanner;
 
@@ -15,7 +17,8 @@ public class MainProject {
                     FAModel faModel = InputData.mainInputData(1);
                     break;
                 case 2:
-                    if (TestFA.testFa()) {
+                    JSONObject object = new JSONObject();
+                    if (TestFA.testFa(object)) {
                         System.out.println("DFA");
                     }
                     else {
