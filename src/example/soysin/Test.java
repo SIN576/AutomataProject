@@ -181,7 +181,7 @@ public class Test {
 
         JSONArray transaction2 = new JSONArray();
         transaction2.add("q0");
-        transaction2.add("b");
+        transaction2.add("o");
         transaction2.add("q0");
 
         JSONArray transaction3 = new JSONArray();
@@ -235,12 +235,6 @@ public class Test {
         transaction3.add("q1");
         transaction3.add("b");
         transaction3.add("q1");
-
-        JSONArray transaction4 = new JSONArray();
-        transaction3.add("q1");
-        transaction3.add("b");
-        transaction3.add("q1");
-
 
         JSONArray transactions = new JSONArray();
         transactions.add(transaction1);
