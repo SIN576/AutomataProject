@@ -9,34 +9,58 @@ import java.util.Scanner; // import scanner for get argument from terminal
 
 public class InputData {
 
-    public static FAModel mainInputData(Integer num){
+    public static JSONObject mainInputData(Integer num){
         JSONArray stringList = InputData.inputAlphabet();
         Integer numberOfState = InputData.inputNumberOfState();
-        JSONArray listState = InputData.listStates(numberOfState);
-        String startState = InputData.inputStartState(listState);
-        JSONArray listFinalState = InputData.listFinalState(listState);
-        JSONArray transactions = InputData.transactions(listState,stringList);
+        JSONArray listStates = InputData.listStates(numberOfState);
+        String startState = InputData.inputStartState(listStates);
+        JSONArray listFinalState = InputData.listFinalState(listStates);
+        JSONArray transactions = InputData.transactions(listStates,stringList);
 
-        FAModel faModel = new FAModel(stringList,numberOfState, listState, startState, listFinalState, transactions);
-
-        System.out.println("w = "+faModel.getListAlphabet());
-        System.out.println("number of state = "+faModel.getNumberOfState());
-        System.out.println("list of state : "+ faModel.getListState());
-        System.out.println("Start state is : "+faModel.getStartState());
-        System.out.println("Final state is : "+faModel.getFinalState());
-        System.out.println("transaction : "+faModel.getTransaction());
-        System.out.println(transactions.get(1));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("alphabets",stringList);
+        jsonObject.put("numberOfState",numberOfState);
+        jsonObject.put("listState",listStates);
+        jsonObject.put("startState",startState);
+        jsonObject.put("finalStates",listFinalState);
+        jsonObject.put("transactions",transactions);
         if(num == 1){
             System.out.print("\nDo you want back?(yes/no): ");
             Scanner scanner = new Scanner(System.in);
             String ans = scanner.nextLine();
             if (ans.equals("no")){
-                faModel = mainInputData(1);
+                jsonObject = mainInputData(1);
             }
         }
-        return faModel;
+        return jsonObject;
     }
 
+    public static void output(JSONObject jsonObject){
+
+        JSONArray alphabets= (JSONArray) jsonObject.get("alphabets");
+        System.out.println("w = "+alphabets);
+
+        String numberOfState =  jsonObject.get("numberOfState")+"";
+        System.out.println("number of state = "+numberOfState);
+
+        JSONArray listStates = (JSONArray) jsonObject.get("listState");
+        System.out.println("list of state : "+ listStates);
+
+        String startState = (String) jsonObject.get("startState");
+        System.out.println("Start state is : "+startState);
+
+        JSONArray finalStates = (JSONArray) jsonObject.get("finalStates");
+        System.out.println("Final state is : "+finalStates);
+
+        JSONArray transactions = (JSONArray) jsonObject.get("transactions");
+        System.out.println("Transactions: ");
+        for (int i = 0; i < transactions.size(); i++) {
+            JSONArray transaction = (JSONArray) transactions.get(i);
+            System.out.println(transaction.get(0)+" ---> "+transaction.get(1)+" ---> "+transaction.get(2));
+        }
+        System.out.println("\n");
+
+    }
     // function for user input Alphabet
     public static JSONArray inputAlphabet() {
         //create list for store all alphabet
@@ -150,14 +174,12 @@ public class InputData {
 
     //function for user input transaction
     public static JSONArray transactions(JSONArray listState,JSONArray listAlphabet) {
-
         //get argument use scanner
         Scanner myObj = new Scanner(System.in);
         System.out.println("when you want finish your input pls input word | done |!");
         System.out.println("example:q0 transaction by a to q1 you will input | q0 a q1 |");
         System.out.println("if q0 transaction by obsilon to q1 you will input | q0 o q1 |");
         System.out.println("Enter transactions : ");
-
         //create [][] store transactions
         JSONArray transactions = new JSONArray();
         int test = 1;
@@ -168,7 +190,6 @@ public class InputData {
                 test = 2;
                 continue;
             }
-
             JSONArray listTransaction = listCutString(transaction);
             if (!checkTransaction(listTransaction,listState,listAlphabet)){
                 System.out.println(listTransaction.toString()+" is incorrect");

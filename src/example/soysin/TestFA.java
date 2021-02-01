@@ -22,19 +22,19 @@ public class TestFA {
     protected static boolean testFa(JSONObject fa){
         JSONArray alphabets = (JSONArray) fa.get("alphabets");
         JSONArray transactions = (JSONArray) fa.get("transactions");
-        Integer numberOfState = (Integer) fa.get("numberOfState");
+        String s = fa.get("numberOfState")+"";
+        Integer numberOfState = Integer.parseInt(s);
        // checkDuplicateT(transactions,numberOfState);
         if (alphabets.size()*numberOfState != transactions.size()){//if total transaction not the number of alphabet * number of State
-            System.out.println("NFa1");
+            return false;
         }else if (checkE(transactions)){//if have E transaction
-            System.out.println("NFa2");
+            return false;
         }else if (checkTransaction(transactions,numberOfState) || checkDuplicateT(transactions,numberOfState)){
-            System.out.println("NFa3");
+            return false;
         }
         else{
-            System.out.println("DFa");
+            return true;
         }
-        return false;
     }
     protected static boolean checkDuplicateT(JSONArray transactions, Integer numberOfState){
         ArrayList<String> stateTransactions = new ArrayList<>();
